@@ -1,13 +1,11 @@
 const slides = [
     {
         image: "slide1.jpg",
-        tagLine:
-            "Impressions tous formats <span>en boutique et en ligne</span>",
+        tagLine: "Impressions tous formats <span>en boutique et en ligne</span>",
     },
     {
         image: "slide2.jpg",
-        tagLine:
-            "Tirages haute définition grand format <span>pour vos bureaux et events</span>",
+        tagLine: "Tirages haute définition grand format <span>pour vos bureaux et events</span>",
     },
     {
         image: "slide3.jpg",
@@ -22,19 +20,34 @@ const slides = [
 const banner = document.querySelector("#banner");
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
-const slideImg = document.querySelector("#banner > img");
+const slideImg = document.querySelector(".banner-img");
 const slideText = document.querySelector("#banner > p");
 const dots = document.querySelector(".dots");
 const numberOfSlide = slides.length;
+let currentIndex = 0;
+
 
 arrowLeft.addEventListener("click", function () {
-    console.log("click gauche");
+    currentIndex--;
+    let slide = slides[currentIndex];
+    slideImg.src = `./assets/images/slideshow/${slide.image}`;
+    slideText.innerHTML = slide.tagLine;
+
+    const dot = document.querySelector(".dot_selected");
+    dot.classList.remove("dot_selected");
+    dots.children[currentIndex].classList.add("dot_selected");
 });
 
 arrowRight.addEventListener("click", function () {
-    console.log("click droit");
-});
+    currentIndex++;
+    let slide = slides[currentIndex];
+    slideImg.src = `./assets/images/slideshow/${slide.image}`;
+    slideText.innerHTML = slide.tagLine;
 
+    const dot = document.querySelector(".dot_selected");
+    dot.classList.remove("dot_selected");
+    dots.children[currentIndex].classList.add("dot_selected");
+});
 
 for (let i = 0; i < numberOfSlide; i++) {
     const dot = document.createElement("span");
