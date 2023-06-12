@@ -29,6 +29,11 @@ let currentIndex = 0;
 
 arrowLeft.addEventListener("click", function () {
     currentIndex--;
+
+    if (currentIndex === -1) {
+        currentIndex = numberOfSlide - 1;
+    } 
+
     let slide = slides[currentIndex];
     slideImg.src = `./assets/images/slideshow/${slide.image}`;
     slideText.innerHTML = slide.tagLine;
@@ -36,10 +41,17 @@ arrowLeft.addEventListener("click", function () {
     const dot = document.querySelector(".dot_selected");
     dot.classList.remove("dot_selected");
     dots.children[currentIndex].classList.add("dot_selected");
+
+    
 });
 
 arrowRight.addEventListener("click", function () {
     currentIndex++;
+
+    if (currentIndex === numberOfSlide) {
+        currentIndex = 0;
+    } 
+
     let slide = slides[currentIndex];
     slideImg.src = `./assets/images/slideshow/${slide.image}`;
     slideText.innerHTML = slide.tagLine;
@@ -47,6 +59,8 @@ arrowRight.addEventListener("click", function () {
     const dot = document.querySelector(".dot_selected");
     dot.classList.remove("dot_selected");
     dots.children[currentIndex].classList.add("dot_selected");
+
+    
 });
 
 for (let i = 0; i < numberOfSlide; i++) {
