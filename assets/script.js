@@ -17,7 +17,6 @@ const slides = [
     },
 ];
 
-const banner = document.querySelector("#banner");
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const slideImg = document.querySelector(".banner-img");
